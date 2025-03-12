@@ -22,6 +22,13 @@ if !@isdefined sklearn
     const sklearn = PyNULL()
 end
 
+Conda.pip_interop(true, PyCall.Conda.ROOTENV)
+PyCall.Conda.pip("install", "git+https://github.com/jobregon1212/rulecosi.git", PyCall.Conda.ROOTENV)
+PyCall.Conda.pip("install", "scikit-learn", PyCall.Conda.ROOTENV)
+
+copy!(rulecosi, pyimport("rulecosi"))
+copy!(sklearn, pyimport("sklearn.ensemble"))
+
 ##############################
 # 1) Struttura e BFS/DFS
 ##############################
@@ -326,12 +333,6 @@ end
 ##############################
 
 function rulecosiplus(ensemble::Any, X_train::Any, y_train::Any)
-    Conda.pip_interop(true, PyCall.Conda.ROOTENV)
-    PyCall.Conda.pip("install", "git+https://github.com/jobregon1212/rulecosi.git", PyCall.Conda.ROOTENV)
-    PyCall.Conda.pip("install", "scikit-learn", PyCall.Conda.ROOTENV)
-    
-    copy!(rulecosi, pyimport("rulecosi"))
-    copy!(sklearn, pyimport("sklearn.ensemble"))
     
     # Convert training data to matrix format if needed
     if !isa(X_train, Matrix)
