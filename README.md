@@ -74,12 +74,13 @@ The framework supports the following datasets:
    ```
    This script conducts:
    - Training of a random forest model (with optimized number of trees) on the specified datasets ["car", "post-operative", "urinary-d1", "urinary-d2", "iris"]
-   - Implementation of multiple algorithms [Lumen, BAtrees, Refne, Trepan, Intrees, RuleCosi+] with predefined parameters
+   - Implementation of multiple algorithms [LUMEN, inTrees, BATrees, REFNE, TREPAN, RuleCOSI+] with predefined parameters
    - Comprehensive rule performance evaluation
    - Detailed statistical output in `evaluation_results_experiment2.csv`
 
 ### Experimenter 3: CSV files generated for comparative analysis plots, including variations of parameter c.
 1. Execute `experimenter3Plot.jl` to generate CSV files with data for different values of parameter `c`:
+   
    ```bash
    julia> include("src/experimenter3Plot.jl")
    ```
